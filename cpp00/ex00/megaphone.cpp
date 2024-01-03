@@ -14,8 +14,9 @@ int	main(int argc, char *argv[])
 			std::string str = argv[i];
 			for (int j = 0; j < static_cast<char>(str.length()); j++)
 			{
-				std::cout << static_cast<char>(std::toupper(str[j])) << std::endl;
+				std::cout << static_cast<char>(std::toupper(str[j]));
 			}
 		}
+		std::cout << std::endl;
 	}
 }

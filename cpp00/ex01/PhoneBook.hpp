@@ -4,6 +4,7 @@
 
 # include "Contact.hpp"
 # include <iomanip>
+# include <cstdio>
 
 # define DELIMITER "|"
 
