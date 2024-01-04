@@ -4,7 +4,6 @@
 
 # include "Contact.hpp"
 # include <iomanip>
-# include <cstdio>
 
 # define DELIMITER "|"
 
@@ -21,6 +20,7 @@ class PhoneBook
 		void	showColumn(void);
 		int		inputIndex(void);
 		void	searchContact(int index);
+		void	showDetail(int index);
 	private:
 		int		_index;
 		int		_maxIndex;

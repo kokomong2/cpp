@@ -19,14 +19,39 @@ void	PhoneBook::add(void)
 
 	std::cout << "First name: ";
 	ft_getline(firstName);
+	if (checkValid(firstName) == false)
+	{
+		std::cout << "Invalid first name." << std::endl;
+		return ;
+	}
 	std::cout << "Last name: ";
 	ft_getline(lastName);
+	if (checkValid(lastName) == false)
+	{
+		std::cout << "Invalid last name." << std::endl;
+		return ;
+	}
 	std::cout << "Nickname: ";
 	ft_getline(nickname);
+	if (checkValid(nickname) == false)
+	{
+		std::cout << "Invalid nickname." << std::endl;
+		return ;
+	}
 	std::cout << "Phone number: ";
 	ft_getline(phoneNumber);
+	if (checkValid(phoneNumber) == false)
+	{
+		std::cout << "Invalid phone number." << std::endl;
+		return ;
+	}
 	std::cout << "Darkest secret: ";
 	ft_getline(darkestSecret);
+	if (checkValid(darkestSecret) == false)
+	{
+		std::cout << "Invalid darkest secret." << std::endl;
+		return ;
+	}
 	this->_contacts[this->_index] = Contact(firstName, lastName, nickname, phoneNumber, darkestSecret);
 	this->updateIndex();
 }
@@ -62,8 +87,7 @@ void	PhoneBook::search(void)
 		std::cout << "Invalid index." << std::endl;
 	else if (index >= 0 && index < this->_maxIndex)
 	{
-		this->showColumn();
-		this->searchContact(index);
+		this->showDetail(index);
 	}
 	else
 		std::cout << "Index out of range." << std::endl;
@@ -106,4 +130,13 @@ void	PhoneBook::searchContact(int index)
 		std::cout << std::setw(10) << this->_contacts[index].getNickname().substr(0, 9) + "." << std::endl;
 	else
 		std::cout << std::setw(10) << this->_contacts[index].getNickname() << std::endl;
+}
+
+void	PhoneBook::showDetail(int index)
+{
+	std::cout << "First name: " << this->_contacts[index].getFirstName() << std::endl;
+	std::cout << "Last name: " << this->_contacts[index].getLastName() << std::endl;
+	std::cout << "Nickname: " << this->_contacts[index].getNickname() << std::endl;
+	std::cout << "Phone number: " << this->_contacts[index].getPhoneNumber() << std::endl;
+	std::cout << "Darkest secret: " << this->_contacts[index].getDarkestSecret() << std::endl;
 }

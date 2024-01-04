@@ -2,6 +2,7 @@
 # define CONTACT_HPP
 
 # include <iostream>
+# include <cstdio>
 
 class Contact
 {
@@ -14,6 +15,7 @@ class Contact
 		std::string getLastName(void);
 		std::string getNickname(void);
 		std::string getPhoneNumber(void);
+		std::string getDarkestSecret(void);
 	private:
 		std::string	_firstName;
 		std::string	_lastName;
@@ -23,5 +25,6 @@ class Contact
 };
 
 std::string	ft_getline(std::string &str);
+bool		checkValid(std::string str);
 
 # endif

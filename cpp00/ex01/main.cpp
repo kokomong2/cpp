@@ -31,3 +31,15 @@ std::string	ft_getline(std::string &str)
 	}
 	return (str); 
 }
+
+bool	checkValid(std::string str)
+{
+	if (str[0] == '\0')
+		return (false);
+	for (int i = 0; i < static_cast<int>(str.length()); i++)
+	{
+		if ((str[i] < '0' || str[i] > '9') && (str[i] < 'A' || str[i] > 'Z') && (str[i] < 'a' || str[i] > 'z'))
+			return (false);
+	}
+	return (true);
+}
