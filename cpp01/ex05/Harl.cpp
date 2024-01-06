@@ -2,26 +2,23 @@
 
 Harl::Harl(void)
 {
-	std::cout << "Harl is dead, long live Harl!" << std::endl;
+	return ;
 }
 
 Harl::~Harl()
 {
-	std::cout << "Harl is dead, long live Harl!" << std::endl;
+	return ;
 }
 
 void	Harl::complain(std::string level)
 {
-	if (level == "debug")
-		this->debug();
-	else if (level == "info")
-		this->info();
-	else if (level == "warning")
-		this->warning();
-	else if (level == "error")
-		this->error();
-	else
-		std::cout << "Invalid level" << std::endl;
+	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	void (Harl::*f[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	for (int i = 0; i < 4; i++)
+	{
+		if (levels[i] == level)
+		   	(this->*f[i])();
+	}
 }
 
 void	Harl::debug(void)
