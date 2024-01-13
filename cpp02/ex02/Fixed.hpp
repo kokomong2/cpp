@@ -19,10 +19,10 @@ class Fixed
 		Fixed&	operator=(const Fixed& src);
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
-		Fixed&	operator++(void);
-		Fixed	operator++(int);
-		Fixed&	operator--(void);
-		Fixed	operator--(int);
+		Fixed&		operator++(void);
+		const Fixed	operator++(int);
+		Fixed&		operator--(void);
+		const Fixed	operator--(int);
 		static Fixed&	min(Fixed& a, Fixed& b);
 		static Fixed&	max(Fixed& a, Fixed& b);
 		static const Fixed&	min(const Fixed& a, const Fixed& b);
