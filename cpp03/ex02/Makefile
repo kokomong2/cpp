@@ -1,7 +1,7 @@
 CC = c++
 CFLAGE = -Wall -Werror -Wextra -std=c++98
-NAME = ex01
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
+NAME = ex02
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
