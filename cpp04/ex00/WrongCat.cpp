@@ -1,11 +1,12 @@
 #include "WrongCat.hpp"
 
 //OCCF
-WrongCat::WrongCat(void) : WrongAnimal("WrongCat") {
+WrongCat::WrongCat(void) : WrongAnimal() {
+	this->_type = "WrongCat";
 	std::cout << "[OCCF] WrongCat default constructor called" << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat& obj) : WrongAnimal(obj) {
+WrongCat::WrongCat(const WrongCat& obj) : WrongAnimal() {
 	std::cout << "[OCCF] WrongCat copy constructor called" << std::endl;
 	*this = obj;
 }

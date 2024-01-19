@@ -1,11 +1,12 @@
 #include "Cat.hpp"
 
 //OCCF
-Cat::Cat(void) : Animal("Cat") {
+Cat::Cat(void) : Animal() {
+	this->_type = "Cat";
 	std::cout << "[OCCF] Cat default constructor called" << std::endl;
 }
 
-Cat::Cat(const Cat& obj) : Animal(obj) {
+Cat::Cat(const Cat& obj) : Animal() {
 	std::cout << "[OCCF] Cat copy constructor called" << std::endl;
 	*this = obj;
 }

@@ -9,7 +9,6 @@ class Animal {
  public:
 	//OCCF
 	Animal(void);
-	Animal(std::string type);
 	Animal(const Animal& obj);
 	Animal& operator=(const Animal& obj);
 	virtual ~Animal(void);

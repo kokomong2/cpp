@@ -4,10 +4,6 @@ Animal::Animal(void) : _type("Animal") {
 	std::cout << "[OCCF] Animal default constructor called" << std::endl;
 }
 
-Animal::Animal(std::string type) : _type(type) {
-	std::cout << "[OCCF] Animal name constructor called" << std::endl;
-}
-
 Animal::Animal(const Animal& obj) {
 	std::cout << "[OCCF] Animal copy constructor called" << std::endl;
 	*this = obj;

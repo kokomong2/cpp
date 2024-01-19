@@ -2,6 +2,11 @@
 #include "Cat.hpp"
 #include "WrongCat.hpp"
 
+void foo(void)
+{
+	system("leaks ex00");
+}
+
 int main()
 {
 	const Animal* meta = new Animal();
@@ -9,6 +14,7 @@ int main()
 	const Animal* cat = new Cat();
 	const WrongAnimal* wrong = new WrongCat();
 
+	// atexit(foo);
 	std::cout << std::endl;
 	std::cout << cat->getType() << " " << std::endl;
 	cat->makeSound();

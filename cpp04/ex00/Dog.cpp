@@ -1,11 +1,12 @@
 #include "Dog.hpp"
 
 //OCCF
-Dog::Dog(void) : Animal("Dog") {
+Dog::Dog(void) : Animal() {
+	this->_type = "Dog";
 	std::cout << "[OCCF] Dog default constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog& obj) : Animal(obj) {
+Dog::Dog(const Dog& obj) : Animal() {
 	std::cout << "[OCCF] Dog copy constructor called" << std::endl;
 	*this = obj;
 }

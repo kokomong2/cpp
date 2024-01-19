@@ -5,10 +5,6 @@ WrongAnimal::WrongAnimal(void) : _type("WrongAnimal") {
 	std::cout << "[OCCF] WrongAnimal default constructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(std::string type) : _type(type) {
-	std::cout << "[OCCF] WrongAnimal name constructor called" << std::endl;
-}
-
 WrongAnimal::WrongAnimal(const WrongAnimal& obj) {
 	std::cout << "[OCCF] WrongAnimal copy constructor called" << std::endl;
 	*this = obj;

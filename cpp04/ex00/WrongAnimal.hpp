@@ -9,7 +9,6 @@ class WrongAnimal {
  public:
 	//OCCF
 	WrongAnimal(void);
-	WrongAnimal(std::string type);
 	WrongAnimal(const WrongAnimal& obj);
 	WrongAnimal& operator=(const WrongAnimal& obj);
 	virtual ~WrongAnimal(void);
