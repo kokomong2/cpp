@@ -1,4 +1,4 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Form::Form(void) : _name("default"), _gradeToSign(150), _gradeToExecute(150) {
 	this->_isSigned = false;
@@ -55,6 +55,10 @@ const char *Form::GradeTooLowException::what() const throw() {
 
 const char *Form::FormAlreadySignedException::what() const throw() {
 	return ("Form is already signed");
+}
+
+const char *Form::FormNotSignedException::what() const throw() {
+	return ("Form is not signed");
 }
 
 std::ostream& operator<<(std::ostream& out, const Form& f)

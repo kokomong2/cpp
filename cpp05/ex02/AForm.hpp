@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-class Form {
+class AForm {
 private:
 	const std::string _name;
 	bool _isSigned;
@@ -22,6 +22,8 @@ public:
 	int getGradeToSign() const;
 	int getGradeToExecute() const;
 
+	virtual void execute(Bureaucrat const &executor) const = 0;
+
 	void beSigned();
 
 	class GradeTooHighException : public std::exception {
@@ -35,6 +37,11 @@ public:
 	};
 
 	class FormAlreadySignedException : public std::exception {
+	public:
+		virtual const char *what() const throw();
+	};
+
+	class FormNotSignedException : public std::exception {
 	public:
 		virtual const char *what() const throw();
 	};
