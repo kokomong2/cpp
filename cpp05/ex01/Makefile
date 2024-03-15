@@ -1,7 +1,7 @@
 CC = c++
 CFLAGE = -Wall -Werror -Wextra -std=c++98
-NAME = ex00
-SRCS = main.cpp Bureaucrat.cpp
+NAME = ex01
+SRCS = main.cpp Bureaucrat.cpp Form.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
