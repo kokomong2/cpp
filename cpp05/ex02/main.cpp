@@ -1,30 +1,35 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main() {
+	// ShrubberyCreationForm: Required grades: sign 145, exec 137
+	// RobotomyRequestForm: Required grades: sign 72, exec 45
+	// PresidentialPardonForm: Required grades: sign 25, exec 5
+	try {
+		Bureaucrat b1("b1", 1);
+		Bureaucrat b2("b2", 150);
+		Bureaucrat b3("b3", 100);
+		AForm *f1 = new ShrubberyCreationForm("f1");
+		AForm *f2 = new RobotomyRequestForm("f2");
+		AForm *f3 = new PresidentialPardonForm("f3");
 
-	try
-	{
-		Bureaucrat a("a", 150);
-		Bureaucrat b("b", 1);
+		b1.signForm(*f1);
+		b1.executeForm(*f1);
 
-		std::cout << a << std::endl;
-		std::cout << b << std::endl;
-		std::cout << std::endl;
+		b2.signForm(*f2);
+		b2.executeForm(*f2);
 
-		Form f("f", 100, 100);
-		std::cout << f << std::endl;
+		b3.signForm(*f3);
+		b3.executeForm(*f3);
 
-		a.signForm(f);
-		std::cout << f << std::endl;
-
-		b.signForm(f);
-		std::cout << f << std::endl;
+		delete f1;
+		delete f2;
+		delete f3;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
 	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-
-	return (0);
+	return 0;
 }
