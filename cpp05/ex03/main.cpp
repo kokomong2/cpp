@@ -3,6 +3,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main() {
 	// ShrubberyCreationForm: Required grades: sign 145, exec 137
@@ -10,11 +11,16 @@ int main() {
 	// PresidentialPardonForm: Required grades: sign 25, exec 5
 	try {
 		Bureaucrat b1("b1", 1);
-		Bureaucrat b2("b2", 150);
-		Bureaucrat b3("b3", 100);
-		AForm *f1 = new ShrubberyCreationForm("f1");
-		AForm *f2 = new RobotomyRequestForm("f2");
-		AForm *f3 = new PresidentialPardonForm("f3");
+		Bureaucrat b2("b2", 40);
+		Bureaucrat b3("b3", 1);
+		Intern intern;
+		try {
+			AForm *f1 = intern.makeForm("shrubbery creation", "f1");
+			AForm *f2 = intern.makeForm("robotomy request", "f2");
+			AForm *f3 = intern.makeForm("presidential pardon", "f3");
+		} catch (std::exception &e) {
+			std::cout << e.what() << std::endl;
+		}
 
 		b1.signForm(*f1);
 		b1.executeForm(*f1);
