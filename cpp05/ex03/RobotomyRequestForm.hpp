@@ -2,6 +2,7 @@
 #define CPP_GIT_ROBOTOMYREQUESTFORM_HPP
 
 #include "AForm.hpp"
+#include <cstdlib>
 
 class Bureaucrat;
 

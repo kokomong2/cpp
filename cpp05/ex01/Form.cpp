@@ -21,7 +21,9 @@ Form::~Form() {
 }
 
 Form &Form::operator=(Form const &rhs) {
-	this->_isSigned = rhs._isSigned;
+	if (this != &rhs) {
+		this->_isSigned = rhs._isSigned;
+	}
 	return (*this);
 }
 

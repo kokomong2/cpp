@@ -21,7 +21,12 @@ AForm::~AForm() {
 }
 
 AForm &AForm::operator=(AForm const &rhs) {
-	this->_isSigned = rhs._isSigned;
+	if (this != &rhs){
+		const_cast<std::string&>(_name) = rhs._name;
+		_isSigned = rhs._isSigned;
+		const_cast<int&>(_gradeToSign) = rhs._gradeToSign;
+		const_cast<int&>(_gradeToExecute) = rhs._gradeToExecute;
+	}
 	return (*this);
 }
 

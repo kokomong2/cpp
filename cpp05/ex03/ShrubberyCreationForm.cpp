@@ -18,7 +18,7 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	AForm::execute(executor);
-	std::ofstream file(this->_target + "_shrubbery");
+	std::ofstream file((this->_target + "_shrubbery").c_str());
 	if (file.is_open()) {
 		file << "      /\\      " << std::endl;
 		file << "     /\\*\\     " << std::endl;

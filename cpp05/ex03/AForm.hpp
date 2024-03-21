@@ -12,12 +12,12 @@ private:
 	bool _isSigned;
 	const int _gradeToSign;
 	const int _gradeToExecute;
-	AForm &operator=(AForm const &rhs);
 
 public:
 	AForm(std::string const &name, int gradeToSign, int gradeToExecute);
 	AForm(void);
 	AForm(AForm const &src);
+	AForm &operator=(AForm const &rhs);
 	virtual ~AForm();
 
 	std::string const &getName() const;
