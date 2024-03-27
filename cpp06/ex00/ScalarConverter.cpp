@@ -46,22 +46,17 @@ bool ScalarConverter::isChar() const
 
 bool ScalarConverter::isInt() const
 {
-	try
-	{
-		std::stoi(_str);
-		return (true);
-	}
-	catch (std::exception & e)
-	{
-		return (false);
-	}
+	std::istringstream iss(_str);
+	int f;
+	iss >> std::noskipws >> f;
+	return (iss.eof() && !iss.fail());
 }
 
 bool ScalarConverter::isFloat() const
 {
 	try
 	{
-		std::stof(_str);
+		std::strtof(_str.c_str(), nullptr);
 		return (true);
 	}
 	catch (std::exception & e)
@@ -74,7 +69,7 @@ bool ScalarConverter::isDouble() const
 {
 	try
 	{
-		std::stod(_str);
+		std::strtod(_str.c_str(), nullptr);
 		return (true);
 	}
 	catch (std::exception & e)
@@ -171,9 +166,9 @@ void ScalarConverter::convertDouble()
 
 void ScalarConverter::printChar() const
 {
-	if ( this->isLiterals() || ( !std::isprint( _i ) && ( _i >= 127 ) ) ) {
+	if ( this->isLiterals() || ( !std::isprint( _c ) && ( _c >= 127 ) ) ) {
 		throw ImpossibleException();
-	} else if ( !std::isprint( this->_i ) ) {
+	} else if ( !std::isprint( this->_c ) ) {
 		throw NonDisplayableException();
 	} else {
 		std::cout << "'" << getC() << "'";
@@ -183,7 +178,7 @@ void ScalarConverter::printChar() const
 
 void ScalarConverter::printInt() const
 {
-	if ( this->isLiterals() || ( !std::isprint( _i ) && ( _i >= 127 ) ) ) {
+	if ( this->isLiterals() ) {
 		throw ImpossibleException();
 	} else {
 		std::cout << getI();
