@@ -16,22 +16,23 @@ enum e_type {
 
 class ScalarConverter {
 private:
+	static ScalarConverter *instance;
+	ScalarConverter();
+	ScalarConverter(std::string str);
+	ScalarConverter(ScalarConverter const & src);
+	ScalarConverter & operator=(ScalarConverter const & src);
+	~ScalarConverter();
+
 	char _c;
 	int _i;
 	float _f;
 	double _d;
 
-	bool _impossible;
-
 	std::string _str;
 	e_type _type;
 
 public:
-	ScalarConverter();
-	ScalarConverter(std::string str);
-	ScalarConverter(ScalarConverter const & src);
-	~ScalarConverter();
-	ScalarConverter & operator=(ScalarConverter const & src);
+	static ScalarConverter *getInstance(std::string str);
 
 	void convert(void);
 
@@ -49,7 +50,6 @@ public:
 	bool isInt() const;
 	bool isFloat() const;
 	bool isDouble() const;
-	bool isImpossible();
 	bool isLiterals() const;
 
 	char getC() const;
