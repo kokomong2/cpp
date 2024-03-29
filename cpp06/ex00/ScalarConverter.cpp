@@ -146,6 +146,10 @@ void ScalarConverter::convertDouble()
 
 void ScalarConverter::printChar() const
 {
+	double d = strtod( _str.c_str(), NULL);
+	if (d < 0 || d > 127) {
+		throw ImpossibleException();
+	}
 	if ( this->isLiterals() || ( !std::isprint( _c ) && ( _c >= 127 ) ) ) {
 		throw ImpossibleException();
 	} else if ( !std::isprint( this->_c ) ) {
@@ -158,10 +162,14 @@ void ScalarConverter::printChar() const
 
 void ScalarConverter::printInt() const
 {
-	std::istringstream iss(_str);
-	long long int l;
-	iss >> std::noskipws >> l;
-	if ( l < std::numeric_limits< int >::min() || l > std::numeric_limits< int >::max() ) {
+	double d = strtod( _str.c_str(), NULL);
+	if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min()) {
+		throw ImpossibleException();
+	}
+	if (_str.compare("+nan") == 0 || _str.compare("-nan") == 0) {
+		throw ImpossibleException();
+	}
+	if (d == 0 && _str.compare("0") != 0) {
 		throw ImpossibleException();
 	}
 	if ( this->isLiterals() ) {
@@ -172,11 +180,6 @@ void ScalarConverter::printInt() const
 
 void ScalarConverter::printFloat() const
 {
-	if (_f > std::numeric_limits<float>::max()) {
-		throw ImpossibleException();
-	} else if (_f < std::numeric_limits<float>::min()) {
-		throw ImpossibleException();
-	}
 	if ( _str.compare( "nan" ) == 0 || _str.compare( "nanf" ) == 0 ) {
 		std::cout << "nanf";
 	} else if ( _str.compare( "+inff" ) == 0 || _str.compare( "+inf" ) == 0 ) {
@@ -184,6 +187,11 @@ void ScalarConverter::printFloat() const
 	} else if ( _str.compare( "-inff" ) == 0 || _str.compare( "-inf" ) == 0 ) {
 		std::cout << "-inff";
 	} else {
+		if (_f > std::numeric_limits<float>::max()) {
+			throw ImpossibleException();
+		} else if (_f < std::numeric_limits<float>::max() * -1) {
+			throw ImpossibleException();
+		}
 		if ( _f - static_cast< int > ( _f ) == 0 ) {
 			std::cout << _f << ".0f";
 		} else {
@@ -195,11 +203,6 @@ void ScalarConverter::printFloat() const
 
 void ScalarConverter::printDouble() const
 {
-	if (_d > std::numeric_limits<double>::max()) {
-		throw ImpossibleException();
-	} else if (_d < std::numeric_limits<double>::min()) {
-		throw ImpossibleException();
-	}
 	if ( _str.compare( "nan" ) == 0 || _str.compare( "nanf" ) == 0 ) {
 		std::cout << "nan";
 	} else if ( _str.compare( "+inff" ) == 0 || _str.compare( "+inf" ) == 0 ) {
@@ -207,6 +210,11 @@ void ScalarConverter::printDouble() const
 	} else if ( _str.compare( "-inff" ) == 0 || _str.compare( "-inf" ) == 0 ) {
 		std::cout << "-inf";
 	} else {
+		if (_d > std::numeric_limits<double>::max()) {
+			throw ImpossibleException();
+		} else if (_d < std::numeric_limits<double>::max() * -1) {
+			throw ImpossibleException();
+		}
 		if ( _d - static_cast< int > ( _d ) == 0 ) {
 			std::cout << _d << ".0";
 		} else {
