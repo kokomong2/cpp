@@ -192,6 +192,9 @@ void ScalarConverter::printFloat() const
 		} else if (_f < std::numeric_limits<float>::max() * -1) {
 			throw ImpossibleException();
 		}
+		if (strtof(_str.c_str(), NULL) == 0 && _str.compare("0") != 0) {
+			throw ImpossibleException();
+		}
 		if ( _f - static_cast< int > ( _f ) == 0 ) {
 			std::cout << _f << ".0f";
 		} else {
@@ -213,6 +216,9 @@ void ScalarConverter::printDouble() const
 		if (_d > std::numeric_limits<double>::max()) {
 			throw ImpossibleException();
 		} else if (_d < std::numeric_limits<double>::max() * -1) {
+			throw ImpossibleException();
+		}
+		if (strtod(_str.c_str(), NULL) == 0 && _str.compare("0") != 0) {
 			throw ImpossibleException();
 		}
 		if ( _d - static_cast< int > ( _d ) == 0 ) {
