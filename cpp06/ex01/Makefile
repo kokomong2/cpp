@@ -1,7 +1,7 @@
 CC = c++
 CFLAGE = -Wall -Werror -Wextra -std=c++98
 NAME = ex01
-SRCS = main.cpp
+SRCS = main.cpp Converter.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

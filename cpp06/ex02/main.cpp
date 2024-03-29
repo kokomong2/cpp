@@ -38,8 +38,12 @@ void    identify( Base& p ) {
 	} catch( const std::exception& e ) {}
 }
 
+void foo (void) {
+	system("leaks ex02");
+}
 int     main( void )
 {
+	atexit(foo);
 	Base*   a = generate();
 	Base*   b = generate();
 	Base*   c = generate();
