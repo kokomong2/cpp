@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 #include <cstdlib>
+#include <limits>
 
 enum e_type {
 	CHAR,

@@ -1,6 +1,6 @@
 #include "ScalarConverter.hpp"
 
-ScalarConverter *ScalarConverter::instance = nullptr;
+ScalarConverter *ScalarConverter::instance = NULL;
 
 ScalarConverter::ScalarConverter(std::string str) : _str(str)
 {
@@ -57,7 +57,7 @@ bool ScalarConverter::isFloat() const
 {
 	try
 	{
-		std::strtof(_str.c_str(), nullptr);
+		std::strtof(_str.c_str(), NULL);
 		return (true);
 	}
 	catch (std::exception & e)
@@ -70,7 +70,7 @@ bool ScalarConverter::isDouble() const
 {
 	try
 	{
-		std::strtod(_str.c_str(), nullptr);
+		std::strtod(_str.c_str(), NULL);
 		return (true);
 	}
 	catch (std::exception & e)
@@ -128,7 +128,7 @@ void ScalarConverter::convertInt()
 
 void ScalarConverter::convertFloat()
 {
-	float f = std::strtof(_str.c_str(), nullptr);
+	float f = std::strtof(_str.c_str(), NULL);
 	_c = static_cast< char >( f );
 	_i = static_cast< int >( f );
 	_f = f;
@@ -137,7 +137,7 @@ void ScalarConverter::convertFloat()
 
 void ScalarConverter::convertDouble()
 {
-	double d = std::strtod(_str.c_str(), nullptr);
+	double d = std::strtod(_str.c_str(), NULL);
 	_c = static_cast< char >( d );
 	_i = static_cast< int >( d );
 	_f = static_cast< float >( d );
@@ -174,7 +174,7 @@ void ScalarConverter::printFloat() const
 {
 	if (_f > std::numeric_limits<float>::max()) {
 		throw ImpossibleException();
-	} else if (_f < std::numeric_limits<float>::lowest()) {
+	} else if (_f < std::numeric_limits<float>::min()) {
 		throw ImpossibleException();
 	}
 	if ( _str.compare( "nan" ) == 0 || _str.compare( "nanf" ) == 0 ) {
@@ -197,7 +197,7 @@ void ScalarConverter::printDouble() const
 {
 	if (_d > std::numeric_limits<double>::max()) {
 		throw ImpossibleException();
-	} else if (_d < std::numeric_limits<double>::lowest()) {
+	} else if (_d < std::numeric_limits<double>::min()) {
 		throw ImpossibleException();
 	}
 	if ( _str.compare( "nan" ) == 0 || _str.compare( "nanf" ) == 0 ) {
@@ -281,7 +281,7 @@ double ScalarConverter::getD() const
 
 ScalarConverter *ScalarConverter::getInstance(std::string str)
 {
-	if (instance == nullptr)
+	if (instance == NULL)
 		instance = new ScalarConverter(str);
 	return (instance);
 }
