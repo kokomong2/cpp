@@ -11,14 +11,14 @@ private:
 	unsigned int    _size;
 
 public:
-	Array( void ) : _arr( new T() ), _size( 0 ) {};
+	Array( void ) : _arr( new T[0] ), _size( 0 ) {};
 	Array( unsigned int n ) : _arr( new T[n] ), _size( n ) {};
 	Array( const Array& rhs ) : _arr( new T[rhs.size()] ), _size( rhs.size() ) {
 		for ( unsigned int i( 0 ); i < _size; i++ )
 			_arr[i] = rhs._arr[i];
 	};
 
-	Array& operator=( const Array& rhs ) {
+	const Array& operator=( const Array& rhs ) {
 		if ( this != &rhs ) {
 			delete [] _arr;
 			_arr = new T[rhs.size()];
