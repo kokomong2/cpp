@@ -48,6 +48,8 @@ int main(int, char**)
 	{
 		numbers[i] = rand();
 	}
+//	const Array<int> arr(3);
+//	arr[0] = 42;
 	delete [] mirror;//
 	return 0;
 }

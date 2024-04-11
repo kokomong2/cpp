@@ -18,7 +18,7 @@ public:
 			_arr[i] = rhs._arr[i];
 	};
 
-	const Array& operator=( const Array& rhs ) {
+	Array& operator=( const Array& rhs ) {
 		if ( this != &rhs ) {
 			delete [] _arr;
 			_arr = new T[rhs.size()];
@@ -29,7 +29,13 @@ public:
 		return *this;
 	}
 
-	T& operator[]( unsigned int i ) const {
+	T& operator[]( unsigned int i ) {
+		if ( i >= _size )
+			throw OutOfBoundsException();
+		return _arr[i];
+	}
+
+	const T& operator[]( unsigned int i ) const {
 		if ( i >= _size )
 			throw OutOfBoundsException();
 		return _arr[i];
