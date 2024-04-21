@@ -9,6 +9,8 @@
 #include <vector>
 #include <algorithm>
 #include <exception>
+#include <ctime>
+#include <cstdlib>
 
 class Span {
 private:

@@ -33,11 +33,9 @@ void Span::addNumber( int n ) {
 void Span::addRandomNumbers(int cnt, int min, int max) {
 	if ( cnt + this->_vec.size() > _size )
 		throw FullArrayException();
+	srand(time(0));
 	for ( int i( 0 ); i < cnt; i++ )
 		_vec.push_back(rand() % (max - min) + min);
-	for (int i = 0; i < 100; ++i) {
-		std::cout << _vec[i] << " ";
-	}
 }
 
 int Span::shortestSpan( void ) {
@@ -62,6 +60,8 @@ int Span::longestSpan( void ) {
 }
 
 void test10000( void ) {
+
+	std::cout << "Test 10000" << std::endl;
 	Span span = Span(10000);
 	span.addRandomNumbers(10000, 0, 10000);
 	std::cout << span.shortestSpan() << std::endl;
