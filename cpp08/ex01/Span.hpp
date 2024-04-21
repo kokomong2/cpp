@@ -12,9 +12,8 @@
 
 class Span {
 private:
-	unsigned int		_n;
-	unsigned int		_size;
-	int*				_arr;
+	unsigned int			_size;
+	std::vector<int>		_vec;
 
 public:
 	Span( void );
@@ -24,6 +23,7 @@ public:
 	~Span( void );
 
 	void addNumber( int n );
+	void addRandomNumbers(int cnt, int min, int max);
 	int shortestSpan( void );
 	int longestSpan( void );
 
@@ -46,5 +46,6 @@ public:
 
 };
 
+void test10000( void );
 
 #endif
