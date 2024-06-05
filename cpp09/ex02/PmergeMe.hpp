@@ -7,6 +7,7 @@
 #include <sys/time.h>
 #include <ctime>
 #include <iomanip>
+#include <algorithm>
 
 class PmergeMe {
 
