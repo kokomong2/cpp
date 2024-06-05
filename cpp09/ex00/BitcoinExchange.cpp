@@ -1,10 +1,4 @@
 #include "BitcoinExchange.hpp"
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <map>
-#include <string>
-#include <cctype>
 
 BitcoinExchange::BitcoinExchange() {}
 
@@ -75,7 +69,8 @@ void BitcoinExchange::checkCsvFile() {
 				std::cout << "Error: include invalid value." << std::endl;
 				throw Error();
 			}
-			value = std::stof(read.substr(date_size + 1));
+			std::istringstream iss(read.substr(date_size + 1));
+			iss >> value;
 			bitcoinData[read.substr(0, date_size)] = value;
 		}
 	}
@@ -88,15 +83,15 @@ bool BitcoinExchange::validateDate(const std::string &s) {
 	int year, month, day;
 
 	std::getline(ss, token, '-');
-	year = std::stoi(token);
+	std::istringstream(token) >> year;
 	if (year < 1000 || year > 9999) return false;
 
 	std::getline(ss, token, '-');
-	month = std::stoi(token);
+	std::istringstream(token) >> month;
 	if (month < 1 || month > 12) return false;
 
 	std::getline(ss, token, '-');
-	day = std::stoi(token);
+	std::istringstream(token) >> day;
 	if (day < 1 || day > 31) return false;
 
 	if (day == 31 && (month == 4 || month == 6 || month == 9 || month == 11)) return false;
@@ -139,7 +134,7 @@ void BitcoinExchange::checkInfo(const std::string &info) {
 		return;
 	}
 
-	value = std::stof(valueStr);
+	std::istringstream(valueStr) >> value;
 	if (value > 1000) {
 		std::cout << "Error: too large a number." << std::endl;
 		return;
@@ -172,9 +167,10 @@ void BitcoinExchange::printBit(const std::string &date, float n) {
 }
 
 bool BitcoinExchange::validateInput(const std::string &s) {
-	char *end;
-	double value = std::strtod(s.c_str(), &end);
-	if (*end != '\0') return false;
+	std::istringstream iss(s);
+	float value;
+	iss >> value;
+	if (iss.fail() || !iss.eof()) return false;
 	if (value < 0) return false;
 	return true;
 }
