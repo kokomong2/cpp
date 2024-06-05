@@ -5,6 +5,8 @@
 #include <stack>
 #include <string>
 #include <sstream>
+#include <stdlib.h>
+#include <cstring>
 
 class RPN {
 private:
