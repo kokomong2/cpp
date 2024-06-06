@@ -19,6 +19,7 @@ const char *BitcoinExchange::Error::what() const throw() {
 	return "Error";
 }
 
+// 입력 파일의 형식을 확인하는 함수
 void BitcoinExchange::checkInputFile(char *file) {
 	std::fstream fs;
 	std::string str;
@@ -42,6 +43,7 @@ void BitcoinExchange::checkInputFile(char *file) {
 	fs.close();
 }
 
+// CSV 파일을 읽고 데이터를 로드하는 함수
 void BitcoinExchange::checkCsvFile() {
 	std::ifstream csv("data.csv");
 	std::string read;
@@ -76,6 +78,7 @@ void BitcoinExchange::checkCsvFile() {
 	}
 }
 
+// 날짜 형식을 확인하는 함수
 bool BitcoinExchange::validateDate(const std::string &s) {
 	if (s.length() != 10) return false;
 	std::istringstream ss(s);
@@ -103,6 +106,7 @@ bool BitcoinExchange::validateDate(const std::string &s) {
 	return true;
 }
 
+// 입력 파일을 처리하는 함수
 void BitcoinExchange::bitcoin(char *file) {
 	std::ifstream configfile(file);
 	std::string read;
@@ -112,6 +116,7 @@ void BitcoinExchange::bitcoin(char *file) {
 	}
 }
 
+// 입력 파일의 한 줄을 확인하고 처리하는 함수
 void BitcoinExchange::checkInfo(const std::string &info) {
 	std::istringstream formats(info);
 	std::string date, valueStr, separator;
@@ -143,6 +148,7 @@ void BitcoinExchange::checkInfo(const std::string &info) {
 	printBit(date, value);
 }
 
+// 비트코인 값을 계산하고 출력하는 함수
 void BitcoinExchange::printBit(const std::string &date, float n) {
 	std::map<std::string, float>::const_iterator iter;
 	float res = 0;
@@ -166,6 +172,7 @@ void BitcoinExchange::printBit(const std::string &date, float n) {
 	}
 }
 
+// 입력 값을 확인하는 함수
 bool BitcoinExchange::validateInput(const std::string &s) {
 	std::istringstream iss(s);
 	float value;
@@ -175,6 +182,7 @@ bool BitcoinExchange::validateInput(const std::string &s) {
 	return true;
 }
 
+// 프로그램을 실행하는 함수
 void BitcoinExchange::play(char *file) {
 	try {
 		checkCsvFile();
